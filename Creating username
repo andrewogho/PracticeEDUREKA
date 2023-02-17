@@ -1,0 +1,40 @@
+Step1: 
+**************
+go to vim /etc/ssh/sshd_config
+
+	i
+scroll down
+remove the # for  password Authentication Yes
+Add # for 	  password Authentication No
+
+:wq!
+
+Step 2:
+**************
+Create password for ec2-user
+
+# passwd ec2-user
+Newpassword:
+ConfirmPassword:
+
+********************
+Step 3:
+***********
+
+Add ec2-user in sudoers files and give all permission
+
+# vim /etc/sudoers
+
+i
+scroll down
+
+under root add like this
+
+ec2-user ALL=NOPASSWD: ALL
+
+**************************
+Step 4:
+
+Restart your sshd connection
+
+# systemctl restart sshd
